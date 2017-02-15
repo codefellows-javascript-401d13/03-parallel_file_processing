@@ -2,4 +2,4 @@
 
 const logFiles = require('./lib/file-reader.js');
 
-logFiles.fileReader('../data/one.txt');
+logFiles.fileReader('one.txt', 'two.txt', 'three.txt');
