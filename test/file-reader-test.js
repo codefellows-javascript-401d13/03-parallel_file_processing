@@ -1,44 +1,36 @@
 'use strict';
 
 const expect = require('chai').expect;
-const fileReader = require('../lib/file-reader.js');
+const readFile = require('../lib/file-reader.js');
 
-describe('testing this file reader', function(){
-  describe('These hex values should be in order', function() {
-    it('the first one should be 3166696c65206e75', function(done){
-      fileReader.readOneFile(`${__dirname}/..data/one.txt`, function(err, data){
-        expect(err).to.equal(err);
-        expect(data).to.equal('3166696c65206e75');
-        done();
+describe('Read File Helper Module', function(){
+  describe('with bad file paths', function(){
+    it('should return an error', function(){
+      readFile([`${__dirname}/dont-exist.txt`], function(err){
+        expect(!!err).to.equal(true);
       });
     });
+  });
 
-    it('the second one should be 3366696c65206e75', function(done){
-      fileReader.readOneFile(`${__dirname}/..data/two.txt`, function(err, data){
-        expect(err).to.equal(err);
-        expect(data).to.equal('3366696c65206e75');
-        done();
-      });
-    });
-
-    it('the third one should be 3266696c65206e75', function(done){
-      fileReader.readOneFile(`${__dirname}/..data/three.txt`, function(err, data){
-        expect(err).to.equal(err);
-        expect(data).to.equal('3266696c65206e75');
-        done();
-      });
+describe('with file good file paths', function(){
+  before((done) => {
+    this.paths = [
+      `${__dirname}/../data/one.txt`,
+      `${__dirname}/../data/two.txt`,
+      `${__dirname}/../data/three.txt`
+    ];
+    done();
+  });
+  it('should have correct order of hex strings', (done) => {
+    var expectedResult = ['3166696c65206e75', '3366696c65206e75', '3266696c65206e75'];
+    readFile(this.paths, function(err, data){
+      expect(err).to.equal(null);
+      expect(data[0]).to.equal(expectedResult[0]);
+      expect(data[1]).to.equal(expectedResult[1]);
+      expect(data[2]).to.equal(expectedResult[2]);
+      console.log('data', data);
+      done();
     });
   });
 });
-
-
-describe('File Reader Thing', function(){
-  describe('with an improper file', function(){
-    it('should return an error', function(done){
-      fileReader(`${__dirname}/not-a-file.txt`, function(err){
-        expect(err).to.be.an('error');
-        done();
-      });
-    });
-  });
 });
