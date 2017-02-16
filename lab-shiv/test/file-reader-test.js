@@ -16,8 +16,9 @@ describe('File Testing Module', function() {
     it('should return contents of the file', function(done) {
       fileReader(`${__dirname}/../data/one.txt`, function (err, data) {
         expect(err).to.equal(null);
-        expect(data).to.be.a('string');
-        expect(data).to.equal('this is the first content\n');
+        // expect(data).to.be.a('string');
+        console.log(data.slice(0, 7));
+        expect(data.toString()).to.equal('this is the first content\n');
         done();
       });
     });
@@ -26,8 +27,9 @@ describe('File Testing Module', function() {
     it ('should return the contents of the file', function(done) {
       fileReader(`${__dirname}/../data/t2wo.txt`, function(err, data) {
         expect(err).to.equal(null);
-        expect(data).to.be.a('string');
-        expect(data).to.equal('The guitar is an ancient and noble instrument\r\n');
+        // expect(data).to.be.a('string');
+        console.log(data.slice(0, 7));
+        expect(data.toString()).to.equal('The guitar is an ancient and noble instrument\r\n');
         done();
       });
     });
@@ -36,8 +38,9 @@ describe('File Testing Module', function() {
     it('should return file contents', function(done) {
       fileReader(`${__dirname}/../data/t3hree.txt`, function(err, data) {
         expect(err).to.equal(null);
-        expect(data).to.be.a('string');
-        expect(data).to.equal('The drums are pretty sweet\n');
+        // expect(data).to.be.a('string');
+        console.log(data.slice(0, 7));
+        expect(data.toString()).to.equal('The drums are pretty sweet\n');
         done();
       });
     });
