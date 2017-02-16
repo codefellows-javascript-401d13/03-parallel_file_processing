@@ -3,6 +3,9 @@
 const expect = require('chai').expect;
 const reader = require('../lib/read.js');
 
+const textFiles = [`${__dirname}/../data/one.txt`, `${__dirname}/../data/two.txt`, `${__dirname}/../data/three.txt`];
+
+
 describe('Read Module', function() {
   describe('with an improper file path', function() {
     it('should return an error', function(done) {
@@ -15,7 +18,7 @@ describe('Read Module', function() {
 
   describe('with a proper file path', function() {
     it('should return the contents of the file', function(done) {
-      reader([`${__dirname}/../data/one.txt`, `${__dirname}/../data/two.txt`, `${__dirname}/../data/three.txt`], function(err, data) {
+      reader(textFiles, function(err, data) {
         expect(err).to.equal(null);
         expect(data[0]).to.be.a('string');
         expect(data[0]).to.equal('Same an ');
@@ -26,7 +29,7 @@ describe('Read Module', function() {
   });
   describe('with a proper file path', function() {
     it('should return the contents of the file', function(done) {
-      reader([`${__dirname}/../data/one.txt`, `${__dirname}/../data/two.txt`, `${__dirname}/../data/three.txt`], function(err, data) {
+      reader(textFiles, function(err, data) {
         expect(err).to.equal(null);
         expect(data[1]).to.be.a('string');
         expect(data[1]).to.equal('Do great');
@@ -37,10 +40,10 @@ describe('Read Module', function() {
 
   describe('with a proper file path', function() {
     it('should return the contents of the file', function(done) {
-      reader([`${__dirname}/../data/one.txt`, `${__dirname}/../data/two.txt`, `${__dirname}/../data/three.txt`], function(err, data) {
+      reader(textFiles, function(err, data) {
         expect(err).to.equal(null);
         expect(data[2]).to.be.a('string');
-        expect(data[2]).to.equal('Do great');
+        expect(data[2]).to.equal('Unwillin');
         done();
       });
     });

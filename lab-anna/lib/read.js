@@ -10,7 +10,7 @@ const printOut = module.exports = function(textFiles, callback) {
   var f2 = '';
   var f3 = '';
 
-  const logArray = [];
+  var logArray = [];
   fs.readFile(textFiles[0], function(err, data) {
     if (err) return callback(err);
     f1 = data.slice(0, 8).toString()
@@ -26,7 +26,7 @@ const printOut = module.exports = function(textFiles, callback) {
         f3 = data.slice(0, 8).toString()
         logArray.push(f3);
         console.log(f3);
-        return (null, logArray);
+        return callback(null, logArray);
       });
     });
   });
