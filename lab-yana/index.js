@@ -4,20 +4,24 @@ const fs = require('fs');
 module.exports = exports = {};
 exports.files = [`${__dirname}/data/one.txt`, `${__dirname}/data/two.txt`, `${__dirname}/data/three.txt`];
 
-exports.fetchFiles = function(files, iterator) {
+exports.fetchFiles = function(files, iterator, cb) {
     var resultsArray = [];
     var doneCount = 0;
     function isComplete(err, data) {
       if (err) throw err;
       doneCount += 1;
       if(doneCount === files.length) {
-        console.log(data);
+        cb(data);
       }
     }
     for (let i = 0; i < files.length; i++) {
       iterator(files[i], resultsArray, isComplete);
     }
   }
+
+exports.logThem = function(data) {
+  console.log(data);
+}
 
 exports.readFiles = function(file, resultsArray, cb) {
   fs.readFile(file, function(err, data) {
@@ -29,4 +33,4 @@ exports.readFiles = function(file, resultsArray, cb) {
   });
 }
 
-exports.fetchFiles(exports.files, exports.readFiles);
+exports.fetchFiles(exports.files, exports.readFiles, exports.logThem);

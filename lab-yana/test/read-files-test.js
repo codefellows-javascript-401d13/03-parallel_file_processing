@@ -25,8 +25,13 @@ describe('File Reader Module', function() {
   });
   describe('#fetchFiles', function() {
     it('should log in order one, two, three', function(done) {
-      //TODO in progress!
-      done();
+      reader.fetchFiles(reader.files, reader.readFiles, function(data) {
+        expect(data.length).to.equal(3);
+        expect(data[0]).to.include('one');
+        expect(data[1]).to.include('two');
+        expect(data[2]).to.include('three');
+        done();
+      });
     });
   });
 });
