@@ -12,4 +12,9 @@ describe('File reading module', function() {
       });
     });
   });
+  describe('with a proper path for file one', function() {
+    it('should return the file for file one.txt', function() {
+      // TODO: make a test
+    })
+  });
 });
