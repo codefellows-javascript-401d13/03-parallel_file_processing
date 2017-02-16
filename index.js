@@ -1,5 +1,7 @@
 'use strict';
 
-const logFiles = require('./lib/file-reader.js');
+// const dir = require('./lib/dir-reader.js').dataFiles;
+const reader = require('./lib/file-reader.js').readFiles;
+const handler = require('./lib/file-reader.js').handleData;
 
-logFiles.fileReader('one.txt', 'two.txt', 'three.txt');
+reader(['one.txt', 'two.txt', 'three.txt'], handler);
