@@ -1,8 +1,8 @@
 'use strict';
 
-const fs = require('fs');
+const fileReader = require('./lib/file-reader.js');
 
-fs.readFile(`${__dirname}/data/one.txt`, function(err, data) {
+fileReader([`${__dirname}/data/one.txt`, `${__dirname}/data/two.txt`, `${__dirname}/data/three.txt`], function (err, result){
   if (err) throw err;
-  console.log('content:', data.toString());
+  console.log(result);
 });
