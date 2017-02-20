@@ -2,16 +2,16 @@
 
 const fs = require('fs');
 const expect = require('chai').expect;
-const reader = require('../index.js');
+const reader = require('../lib/read-files.js');
 
 describe('File Reader Module', function() {
   describe('with an improper file path', function() {
     it('should return error', function(done) {
       let resArray = [];
       reader.readFiles(`${__dirname}/../data/not-valid-path.txt`, resArray, function(err) {
-         expect(err).to.be.an('error');
-         done();
-       });
+        expect(err).to.be.an('error');
+        done();
+      });
     });
   });
   describe('with a proper file path', function() {
