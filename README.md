@@ -11,9 +11,9 @@
 
 ##Description:
 
-* For this assignment you will need to read three files and console log the first 8 bytes ***(in hex)*** of each file.
+√ For this assignment you will need to read three files and console log the first 8 bytes ***(in hex)*** of each file.
 
-* Regardless of file size, all three files should be read and logged in the order `'one.txt'`, `'two.txt'`, `'three.txt'`.
+√ Regardless of file size, all three files should be read and logged in the order `'one.txt'`, `'two.txt'`, `'three.txt'`.
 
 * You will need to include tests that guarantee that the files are logged in the proper order.
 
