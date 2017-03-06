@@ -5,9 +5,10 @@ const readFileHelper = require('../lib/file-reader.js');
 
 describe('File Reader Module', function() {
   describe('with bad file paths', function() {
-    if('should return an error',function() {
+    it('should return an error',function() {
       readFileHelper([`${__dirname}/bad-file.txt`], function(err) {
-        expect(err).to.equal('true');
+        // console.log(err.code);
+        expect(err.code).to.equal('ENOENT');
       });
     });
   });
